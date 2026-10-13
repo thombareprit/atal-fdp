@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Navigation, Landmark, Compass, ExternalLink } from 'lucide-react';
+import { MapPin, Navigation, Landmark, Compass, ExternalLink, Hospital } from 'lucide-react';
 import sipnaCampus from '../assets/sipna-campus.jpg';
 
 export const VenueSection: React.FC = () => {
@@ -8,10 +8,13 @@ export const VenueSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Section Header */}
-        <div className="text-center">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-crypto text-xs font-bold uppercase tracking-wider">
-            Venue
+        <div className="text-center space-y-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+            Program Venues
           </span>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
+            Academic Campus
+          </h2>
         </div>
 
         {/* 2. Split Card Banner Container */}
@@ -21,35 +24,35 @@ export const VenueSection: React.FC = () => {
           <div className="lg:col-span-7 relative overflow-hidden group cursor-pointer">
             <img
               src={sipnaCampus}
-              alt="Sipna Campus"
-              className="w-full h-full min-h-[320px] object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+              alt="Sipna SCOET Campus"
+              className="w-full h-full min-h-[340px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
             />
             
             {/* Hover Spotlight Lens */}
             <div className="group-hover:opacity-100 opacity-0 transition-opacity duration-500 pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] z-10" />
 
-            {/* Bottom Gradient Location Badge (Absolute overlay on hover) */}
-            <div className="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-4 py-2 rounded-full absolute bottom-4 left-4 border border-white/20 group-hover:opacity-100 opacity-0 transition-opacity duration-300 z-20">
-              <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-              <span>SCOET Main Academic Campus</span>
+            {/* Bottom Gradient Location Badge */}
+            <div className="flex items-center gap-2 bg-slate-900/85 backdrop-blur-md text-white text-xs font-bold px-4 py-2 rounded-full absolute bottom-4 left-4 border border-white/20 z-20">
+              <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span>SCOET Main Academic Campus, Amravati</span>
             </div>
           </div>
 
           {/* Right Side (5 Columns) */}
-          <div className="lg:col-span-5 p-8 flex flex-col justify-center bg-slate-50/50 space-y-6">
+          <div className="lg:col-span-5 p-8 flex flex-col justify-center bg-slate-50/60 space-y-6">
             <div className="space-y-4">
               <h3 className="text-xl font-black text-slate-900 flex items-center gap-2 border-b border-slate-200/60 pb-3">
                 <Landmark className="w-5 h-5 text-primary" />
-                Department of Computer Science and Engineering
+                Department of Electronics & Telecommunication Engineering
               </h3>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex gap-2.5 items-start">
                   <MapPin className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <span className="block text-[10px] font-black text-slate-400 uppercase tracking-wide">
-                      Full Address
+                      Host Institute Address
                     </span>
                     <p className="text-xs sm:text-sm font-extrabold text-slate-800 leading-normal mt-0.5">
                       Sipna College of Engineering & Technology, <br />
@@ -59,14 +62,26 @@ export const VenueSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2.5 items-start border-t border-slate-100 pt-3">
+                <div className="flex gap-2.5 items-start border-t border-slate-200/60 pt-3">
                   <Compass className="w-4.5 h-4.5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
                     <span className="block text-[10px] font-black text-slate-400 uppercase tracking-wide">
-                      Hall Location
+                      Session Venue
                     </span>
-                    <p className="text-xs sm:text-sm font-extrabold text-slate-705 mt-0.5">
-                      CSE Seminar Hall, Ground Floor, Academic Block B
+                    <p className="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">
+                      E&TC Seminar Hall & Advanced Research Laboratories, Academic Block
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 items-start border-t border-slate-200/60 pt-3">
+                  <Hospital className="w-4.5 h-4.5 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="block text-[10px] font-black text-amber-600 uppercase tracking-wide">
+                      Field Visit Partner
+                    </span>
+                    <p className="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">
+                      Rainbow Institute of Medical Sciences (RIMS), Badnera Road, Amravati
                     </p>
                   </div>
                 </div>
@@ -94,10 +109,10 @@ export const VenueSection: React.FC = () => {
               href="https://www.google.com/maps?cid=7496395861405588599"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#0F172A] hover:bg-[#1D4ED8] text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer text-xs uppercase tracking-wider"
+              className="inline-flex items-center gap-2 bg-[#0F172A] hover:bg-[#1D4ED8] text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-xs uppercase tracking-wider min-h-[44px]"
             >
               <Navigation className="w-4 h-4 shrink-0" />
-              Open in Google Maps
+              <span>Navigate via Google Maps</span>
               <ExternalLink className="w-3.5 h-3.5 shrink-0" />
             </a>
           </div>

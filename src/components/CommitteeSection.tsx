@@ -1,110 +1,101 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone } from 'lucide-react';
-import jagdishGupta from '../assets/jagdish-gupta.jpg';
-import sanjayKherde from '../assets/sanjay-kherde.jpg';
-import vkShandilya from '../assets/v-k-shandilya.jpg';
-import sRathod from '../assets/s-rathod.jpg';
-import hGulhane from '../assets/h-gulhane.jpg';
-import sDhande from '../assets/s-dhande.jpg';
-import aBardekar from '../assets/a-bardekar.jpg';
-import kIngole from '../assets/k-ingole.jpg';
+import { Phone, Mail, ShieldCheck } from 'lucide-react';
+import jagdishGuptaImg from '../assets/committee/jagdish-gupta.jpg';
+import sanjayKherdeImg from '../assets/committee/sanjay-kherde.jpg';
+import vishwasGaikwadImg from '../assets/committee/vishwas-gaikwad.jpeg';
+import ujwalRamekarImg from '../assets/committee/ujwal-ramekar.jpeg';
+import nikeshGadareImg from '../assets/committee/nikesh-gadare.jpeg';
+
+interface CommitteeMember {
+  role: string;
+  name: string;
+  designation: string;
+  image: string;
+  phone?: string;
+}
 
 export const CommitteeSection: React.FC = () => {
-  const leadership = [
+  const leadership: CommitteeMember[] = [
     {
       role: 'Patron',
       name: "Hon'ble Shri Jagdishji Gupta",
-      title: 'President, Sipna Shikshan Prasarak Mandal (SSPM)',
-      image: jagdishGupta,
+      designation: 'President, Sipna Shikshan Prasarak Mandal, Amravati',
+      image: jagdishGuptaImg,
     },
     {
-      role: 'Chairman',
+      role: 'Organizing Chair',
       name: 'Dr. Sanjay M. Kherde',
-      title: 'Principal, Sipna College of Engineering & Technology',
-      image: sanjayKherde,
+      designation: 'Principal, Sipna College of Engineering & Technology',
+      image: sanjayKherdeImg,
     },
     {
-      role: 'Convenor',
-      name: 'Dr. Vijaya K. Shandilya',
-      title: 'HOD, Department of Computer Science and Engineering',
-      image: vkShandilya,
+      role: 'Convener',
+      name: 'Dr. Vishwas T. Gaikwad',
+      designation: 'Head, Department of Electronics & Telecommunication Engineering',
+      image: vishwasGaikwadImg,
     },
   ];
 
-  const coordinators = [
+  const coordinators: CommitteeMember[] = [
     {
-      role: 'Coordinator',
-      name: 'Dr. Seema B. Rathod',
-      phone: '+91 9423622703',
-      email: 'sbrathod@sipnaengg.ac.in',
-      image: sRathod,
+      role: 'FDP Coordinator',
+      name: 'Prof. Ujwal V. Ramekar',
+      designation: 'Assistant Professor, Dept. of E&TC',
+      phone: '+91 7709077187',
+      image: ujwalRamekarImg,
     },
     {
-      role: 'Co-Coordinator',
-      name: 'Dr. Harsha S. Gulhane',
-      phone: '+91 9561584815',
-      email: 'hrvyawahare@sipnaengg.ac.in',
-      image: hGulhane,
+      role: 'FDP Co-Coordinator',
+      name: 'Dr. Nikesh T. Gadare',
+      designation: 'Assistant Professor, Dept. of E&TC',
+      phone: '+91 9096310166',
+      image: nikeshGadareImg,
     },
   ];
-
-  const advisors = [
-    { name: 'Dr. S. S. Dhande', role: 'Professor', image: sDhande },
-    { name: 'Dr. A. A. Bardekar', role: 'Professor', image: aBardekar },
-    { name: 'Dr. K. R. Ingole', role: 'Associate Professor', image: kIngole },
-  ];
-
-  // Framer Motion variants for parent card hover ring trigger
-  const cardVariants = {
-    rest: { y: 0, shadow: '0 10px 30px rgba(15, 23, 42, 0.04)' },
-    hover: { y: -5, shadow: '0 20px 40px rgba(15, 23, 42, 0.09)' },
-  };
-
-  const ringVariants = {
-    rest: { borderColor: '#CBD5E1', scale: 1 },
-    hover: { borderColor: '#2563EB', scale: 1.05 },
-  };
 
   return (
     <section id="committee" className="scroll-mt-24 py-12 md:py-16 bg-canvas border-b border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Section Header */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-primary text-xs font-bold uppercase tracking-wider">
-            Organizers
+            Organizing Committee
           </div>
           <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
-            Administration
+            Leadership & Administration
           </h2>
+          <p className="max-w-2xl mx-auto text-slate-600 text-sm font-medium">
+            Governed by institutional leadership and spearheaded by the Department of Electronics & Telecommunication Engineering.
+          </p>
         </div>
 
-        {/* 1. Row 1: Leadership (3 Centered Cards) with 130px circular avatar frames */}
-        <div className="space-y-6">
-          {/* <h3 className="text-sm font-black text-slate-400 tracking-widest uppercase text-center">
-            Organizing Leadership
-          </h3> */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-stretch">
+        {/* Top Row (Leadership): 3 Balanced Cards Centered */}
+        <div className="space-y-4">
+          <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase text-center">
+            Institutional Leadership
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-5xl mx-auto">
             {leadership.map((leader) => (
               <div
                 key={leader.role}
-                className="bg-white rounded-2xl border border-slate-200 p-6 shadow-premium flex flex-col items-center text-center space-y-4 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 group"
+                className="p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm flex flex-col items-center text-center justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 group"
               >
-                {/* 130px avatar frames */}
-                <img
-                  src={leader.image}
-                  alt={leader.name}
-                  className="w-[130px] h-[130px] rounded-full object-cover border-4 border-slate-200 hover:border-[#1D4ED8] transition-all duration-300 shadow-md mx-auto mb-4 select-none"
-                />
-                
-                <div className="space-y-1">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-50 text-primary border border-blue-250 text-[10px] font-black tracking-wider uppercase">
+                <div className="flex flex-col items-center w-full">
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mx-auto rounded-full object-cover object-top border-2 border-slate-100 shadow-inner mb-3 select-none group-hover:border-[#1D4ED8] transition-colors duration-300"
+                    loading="lazy"
+                  />
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-50 text-primary border border-blue-200 text-[10px] font-black tracking-wider uppercase mb-1.5">
                     {leader.role}
                   </span>
-                  <h4 className="text-base font-extrabold text-slate-950 group-hover:text-primary transition-colors duration-200">{leader.name}</h4>
-                  <p className="text-xs text-slate-500 font-semibold leading-normal max-w-[220px] mx-auto">
-                    {leader.title}
+                  <h4 className="text-sm sm:text-base font-black text-slate-900 tracking-tight text-center leading-snug group-hover:text-primary transition-colors duration-200">
+                    {leader.name}
+                  </h4>
+                  <p className="text-[11px] sm:text-xs font-semibold text-slate-600 text-center mt-1 leading-normal">
+                    {leader.designation}
                   </p>
                 </div>
               </div>
@@ -112,102 +103,75 @@ export const CommitteeSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 1. Row 2: Workshop Coordinators centered horizontally with parent card hover ring trigger */}
-        <div className="space-y-6 pt-4">
-          <h3 className="text-sm font-black text-slate-400 tracking-widest uppercase text-center">
-            Workshop Coordinators
+        {/* Bottom Row (Execution): 2 Balanced Cards Centered */}
+        <div className="space-y-4 pt-2">
+          <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase text-center">
+            Program Coordinators
           </h3>
-          <div className="flex flex-wrap gap-8 justify-center items-stretch mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-sm md:max-w-2xl mx-auto mt-2 md:mt-4">
             {coordinators.map((coord) => (
-              <motion.div
+              <div
                 key={coord.role}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-                variants={cardVariants}
-                className="w-full md:w-[340px] bg-white rounded-2xl border border-slate-200 p-6 shadow-premium flex flex-col justify-between items-center text-center space-y-4 transition-all duration-300 cursor-default"
+                className="p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm flex flex-col items-center text-center justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 group"
               >
-                {/* Card-level hover ring trigger: Image ring border transforms Gray -> Royal Blue */}
-                <motion.img
-                  variants={ringVariants}
-                  src={coord.image}
-                  alt={coord.name}
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-[3px] shadow-sm mx-auto mb-3 select-none"
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <div className="space-y-1">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-150 text-[10px] font-black tracking-wider uppercase">
+                <div className="flex flex-col items-center w-full">
+                  <img
+                    src={coord.image}
+                    alt={coord.name}
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mx-auto rounded-full object-cover object-top border-2 border-slate-100 shadow-inner mb-3 select-none group-hover:border-[#1D4ED8] transition-colors duration-300"
+                    loading="lazy"
+                  />
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-[10px] font-black tracking-wider uppercase mb-1.5">
                     {coord.role}
                   </span>
-                  <h4 className="text-base font-extrabold text-slate-955 transition-colors duration-200">{coord.name}</h4>
-                  {/* <p className="text-xs text-slate-400 font-bold">Dept. of CSE, SCOET</p> */}
-                </div>
-
-                {/* Contacts */}
-                <div className="w-full border-t border-slate-100 pt-4 space-y-2 text-xs">
-                  <a
-                    href={`tel:${coord.phone.replace(/\s+/g, '')}`}
-                    className="flex items-center justify-center gap-2 text-slate-600 hover:text-[#1D4ED8] transition-colors font-semibold"
-                  >
-                    <Phone className="w-4 h-4 text-slate-405 shrink-0" />
-                    {coord.phone}
-                  </a>
-                  <a
-                    href={`mailto:${coord.email}`}
-                    className="flex items-center justify-center gap-2 text-slate-655 hover:text-[#1D4ED8] transition-colors font-semibold overflow-hidden text-ellipsis"
-                  >
-                    <Mail className="w-4 h-4 text-slate-405 shrink-0" />
-                    {coord.email}
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* 1. Row 3: Advisory Committee rendered as a clean 3-card horizontal row with circular photo avatars */}
-        <div className="space-y-6 pt-4">
-          <h3 className="text-sm font-black text-slate-400 tracking-widest uppercase text-center">
-            Advisory Committee
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-stretch">
-            {advisors.map((advisor, index) => (
-              <motion.div
-                key={index}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-                variants={cardVariants}
-                className="bg-white rounded-2xl border border-slate-200 p-6 shadow-premium flex flex-col justify-between items-center text-center space-y-4 transition-all duration-300 cursor-default"
-              >
-                {/* 1. Image ring border transforms Gray -> Royal Blue with parent card hover trigger */}
-                <motion.img
-                  variants={ringVariants}
-                  src={advisor.image}
-                  alt={advisor.name}
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-[3px] shadow-sm mx-auto mb-3 select-none"
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <div className="space-y-1.5">
-                  <h4 className="text-base font-extrabold text-slate-950 transition-colors duration-200">
-                    {advisor.name}
+                  <h4 className="text-sm sm:text-base font-black text-slate-900 tracking-tight text-center leading-snug group-hover:text-primary transition-colors duration-200">
+                    {coord.name}
                   </h4>
-                  <p className="text-xs text-slate-500 font-semibold leading-normal">
-                    {advisor.role}
+                  <p className="text-[11px] sm:text-xs font-semibold text-slate-600 text-center mt-1 leading-normal">
+                    {coord.designation}
                   </p>
-                  {/* <p className="text-[10px] text-slate-400 font-bold">SCOET, Amravati</p> */}
                 </div>
-              </motion.div>
+
+                {/* Mobile Contact with minimum 44px touch target - Personal email strictly omitted */}
+                {coord.phone && (
+                  <div className="w-full border-t border-slate-100 pt-3 mt-3">
+                    <a
+                      href={`tel:${coord.phone.replace(/\s+/g, '')}`}
+                      className="min-h-[44px] text-[11px] font-bold text-blue-700 hover:text-blue-800 text-center flex items-center justify-center gap-1.5 transition-colors active:scale-95"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <span>Mobile: {coord.phone}</span>
+                    </a>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
 
-        {/* 1. Bottom Badge: EXACTLY ONE "SCOET CSE Academic Counsel" badge centered at the bottom of the section */}
-        {/* <div className="w-full max-w-md mx-auto text-center mt-12 py-3 px-6 bg-slate-105 rounded-full border border-slate-200 text-xs font-bold text-slate-600 shadow-inner select-none">
-          SCOET CSE Academic Counsel
-        </div> */}
+        {/* Official Communications Desk Card */}
+        <div className="max-w-3xl mx-auto rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-amber-400 text-xs font-black uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Official Communication Desk</span>
+            </div>
+            <h4 className="text-lg sm:text-xl font-black text-white">
+              Official Desk: atalfdp_extc@sipnaengg.ac.in
+            </h4>
+            <p className="text-xs text-slate-300 font-medium">
+              Have queries or need official assistance? Connect directly with the FDP coordination secretariat.
+            </p>
+          </div>
+
+          <a
+            href="mailto:atalfdp_extc@sipnaengg.ac.in"
+            className="shrink-0 bg-white hover:bg-slate-100 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all shadow-md inline-flex items-center gap-2 text-xs uppercase tracking-wider min-h-[44px]"
+          >
+            <Mail className="w-4 h-4 text-primary" />
+            <span>Contact Desk</span>
+          </a>
+        </div>
 
       </div>
     </section>

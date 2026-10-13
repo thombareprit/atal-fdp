@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
           {/* =====================================================================
               BRAND DOCKING SLOT: BLANK AT TOP -> REVEALS ON SCROLL
           ===================================================================== */}
-          <div className="flex items-center min-w-[32px]">
+          <div className="flex items-center min-w-[32px] max-w-[calc(100%-54px)] overflow-hidden">
             {/* 1. DESKTOP VIEWPORT: CONTINUOUS SHARED LAYOUT ID LOGO FLIGHT */}
             {isScrolledPastHero && (
               <motion.div
@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.96 }}
                   transition={{ duration: MOBILE_DURATION, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex md:hidden items-center gap-2 cursor-pointer select-none"
+                  className="flex md:hidden items-center gap-2 cursor-pointer select-none overflow-hidden"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   <img
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
                     alt="Sipna Logo"
                     className="h-7 sm:h-8 w-auto object-contain shrink-0"
                   />
-                  <span className="text-[9.5px] min-[375px]:text-[10.5px] min-[400px]:text-[11.5px] font-black text-[#0F172A] uppercase tracking-tighter whitespace-nowrap">
+                  <span className="text-[9px] min-[360px]:text-[10px] min-[400px]:text-[11.5px] font-black text-[#0F172A] uppercase tracking-tighter whitespace-nowrap truncate">
                     Sipna College of Engineering & Technology
                   </span>
                 </motion.div>
@@ -108,12 +108,12 @@ export const Navbar: React.FC = () => {
           {/* Right: High-contrast Royal Academic Blue CTA Button */}
           <div className="hidden md:block">
             <a
-              href="https://atalacademy.aicte-india.org/"
+              href="https://atalacademy.aicte.gov.in/login"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#E36414] hover:bg-[#C25512] text-white font-semibold px-5 py-2.5 rounded-full shadow-md transition-all cursor-pointer inline-flex items-center gap-1 text-xs uppercase tracking-wider min-h-[44px]"
             >
-              Register Now
+              Register on ATAL
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-[9998] bg-slate-955 md:hidden"
+              className="fixed inset-0 z-[9998] bg-slate-900/60 backdrop-blur-xs md:hidden"
             />
 
             {/* Slide-out Drawer */}
@@ -185,17 +185,17 @@ export const Navbar: React.FC = () => {
 
               <div className="pt-6 border-t border-slate-100">
                 <a
-                  href="https://atalacademy.aicte-india.org/"
+                  href="https://atalacademy.aicte.gov.in/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
                   className="w-full inline-flex items-center justify-center gap-1.5 py-3 min-h-[44px] bg-[#1D4ED8] hover:bg-blue-700 text-white font-extrabold text-sm rounded-xl shadow-md transition-all duration-200 uppercase tracking-wider"
                 >
-                  Register Now
+                  Register on ATAL Portal
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
-                <p className="text-[10px] text-center text-slate-400 mt-3 font-semibold">
-                  Workshop ID: 2565537652
+                <p className="text-[11px] text-center text-slate-400 mt-3 font-semibold">
+                  Application No: 1775875503
                 </p>
               </div>
             </motion.div>

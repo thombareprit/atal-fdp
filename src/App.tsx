@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { SpeakersSection } from './components/SpeakersSection';
-import { ScheduleSection } from './components/ScheduleSection';
+import { TimelineSection } from './components/TimelineSection';
 import { VenueSection } from './components/VenueSection';
 import { CommitteeSection } from './components/CommitteeSection';
 import { RegistrationSection } from './components/RegistrationSection';
@@ -38,7 +38,7 @@ const App: React.FC = () => {
         </motion.div>
 
         <motion.div {...revealProps}>
-          <ScheduleSection />
+          <TimelineSection />
         </motion.div>
 
         <motion.div {...revealProps}>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
+import { ArrowUpRight, Calendar, Sparkles } from 'lucide-react';
 import sipnaLogo from '../assets/sipna-logo.png';
 import naacLogo from '../assets/naac-logo.png';
 import nbaLogo from '../assets/nba-logo.svg';
@@ -65,13 +66,12 @@ export const HeroSection: React.FC = () => {
     }
   };
 
-  const credentials = [
-    { key: 'Workshop Dates', value: '29th October – 31st October 2026' },
-    { key: 'Workshop ID', value: '2565537652' },
-    { key: 'Conduct Mode', value: 'Offline Mode' },
-    { key: 'Medium of Instruction', value: 'Hindi Medium (AICTE-VAANI Regional Language Initiative)' },
-    { key: 'Venue', value: 'Sipna College of Engineering & Technology, Amravati' },
-    { key: 'Certification', value: 'Min 80% Attendance & 70% Test Score required for ATAL Certificate' },
+  const specifications = [
+    { key: 'FDP Dates', value: '07th December – 12th December 2026' },
+    { key: 'Application ID', value: '1775875503' },
+    { key: 'Conduct Mode', value: 'Offline (Hands-on Labs + Hospital Visit)' },
+    { key: 'Department', value: 'Electronics & Telecommunication Engineering' },
+    { key: 'Certification', value: 'ATAL Academy (Min 80% Attendance, Test Score & Report)' },
   ];
 
   return (
@@ -131,85 +131,84 @@ export const HeroSection: React.FC = () => {
           <span className="text-[0.75rem] font-bold tracking-[0.2em] text-slate-500 uppercase mb-1">
             SIPNA SHIKSHAN PRASARAK MANDAL'S
           </span>
-          <h1 className="text-lg sm:text-2xl md:text-3xl font-black text-[#0F172A] tracking-tight uppercase leading-snug max-w-2xl mx-auto">
+          <h1 className="text-lg sm:text-2xl md:text-3xl font-black text-[#0F172A] tracking-tight uppercase leading-snug max-w-3xl mx-auto">
             SIPNA COLLEGE OF ENGINEERING & TECHNOLOGY, AMRAVATI
           </h1>
           <span className="text-xs sm:text-sm font-extrabold text-red-600 tracking-wide mt-1">
             ESTD - 1999 | An Autonomous Institute
           </span>
           <span className="text-sm sm:text-base md:text-lg font-black text-[#1D4ED8] tracking-wide uppercase leading-tight mt-1 mb-2">
-            Department of Computer Science and Engineering
+            DEPARTMENT OF ELECTRONICS & TELECOMMUNICATION ENGINEERING
           </span>
           <div className="flex items-center justify-center gap-4 sm:gap-6 my-2">
             <img src={naacLogo} alt="NAAC Grade A+" className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
             <span className="h-6 w-px bg-slate-300" />
-            <img src={nbaLogo} alt="NBA Accredited" className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
+            <img src={nbaLogo} alt="NBA Accredited (4 Consecutive Terms)" className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
           </div>
-          <p className="text-[11px] sm:text-xs font-semibold text-slate-600 text-center max-w-xl mx-auto leading-normal">
-            (Affiliated to Sant Gadge Baba Amravati University) | Accredited by NAAC with grade A+ | Accredited by NBA | Accredited by IAO
+          <p className="text-[11px] sm:text-xs font-semibold text-slate-600 text-center max-w-2xl mx-auto leading-normal">
+            Accredited by NAAC with Grade A+ | NBA Accredited (4 Consecutive Terms) | Approved by AICTE
           </p>
         </div>
 
-        {/* 1. Hero Grid Structure (2-Column Layout) */}
+        {/* 2. Hero Grid Structure (2-Column Layout) */}
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column (7 Columns) */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-7">
             
             {/* Interactive Sponsor Box with gold fill transition */}
-            <div className="flex items-center gap-5 p-4 md:p-5 rounded-2xl bg-amber-500/15 border-2 border-amber-500/40 shadow-lg shadow-amber-500/10 mb-6 transition-all duration-300 hover:bg-amber-500/20 hover:border-amber-500/60 hover:scale-[1.02] cursor-default">
+            <div className="flex items-center gap-5 p-4 md:p-5 rounded-2xl bg-amber-500/15 border-2 border-amber-500/40 shadow-lg shadow-amber-500/10 mb-6 transition-all duration-300 hover:bg-amber-500/20 hover:border-amber-500/60 hover:scale-[1.01] cursor-default">
               <img
                 src={aicteLogo}
-                alt="AICTE Logo"
+                alt="AICTE ATAL Logo"
                 className="h-16 md:h-20 w-auto object-contain shrink-0 filter drop-shadow-md"
               />
               <div>
-                <span className="text-base md:text-xl font-black tracking-wider text-[#92400E] uppercase block">
-                  AICTE-VAANI SPONSORED
+                <span className="text-sm sm:text-lg md:text-xl font-black tracking-wider text-[#92400E] uppercase block">
+                  AICTE ATAL SPONSORED SIX DAYS OFFLINE FDP
                 </span>
-                <span className="text-xs md:text-sm font-extrabold text-slate-800 tracking-wide block uppercase mt-0.5">
-                  3-Days National Technical Workshop (Hindi Medium)
-                </span>
-                <span className="text-xs md:text-sm font-normal text-200 tracking-wide block uppercase mt-0.5">
-                  ID: 2565537652
+                <span className="text-xs md:text-sm font-extrabold text-slate-800 tracking-wide block mt-1">
+                  Application No: 1775875503 • Offline Mode • 7th Dec – 12th Dec 2026
                 </span>
               </div>
             </div>
 
             {/* Headline */}
-            <h1 className="text-2xl md:text-5xl font-black md:font-extrabold text-[#0F172A] leading-tight mb-4 tracking-tight">
-              Quantum Technologies{' '}
-              <span className="text-[#E36414] bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-900">
-                for Viksit Bharat
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black md:font-extrabold text-[#0F172A] leading-tight mb-4 tracking-tight">
+              Artificial Intelligence in Biomedical Engineering:{' '}
+              <span className="text-[#1D4ED8] bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600">
+                Advancing Next-Generation Healthcare Systems
               </span>
-            </h1>
+            </h2>
 
-            {/* Subtitle */}
-            <p className="text-base text-slate-600 leading-relaxed mb-6 max-w-xl font-semibold">
-              National integration through technical curriculum delivery in native languages. Exploring the convergence of Quantum Computing, Cryptography, AI/ML, and Blockchain for Viksit Bharat 2047.
+            {/* Sub-copy */}
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl font-semibold">
+              Empowering academicians, clinical specialists, and research scholars with AI/ML foundations, federated learning, neuroimaging, and precision healthcare technologies aligned with NEP-2020.
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-2">
               <a
-                href="https://atalacademy.aicte-india.org/"
+                href="https://atalacademy.aicte.gov.in/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#E36414] hover:bg-[#AE4C0F] text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] cursor-pointer inline-flex items-center justify-center min-h-[44px]"
+                className="bg-[#E36414] hover:bg-[#AE4C0F] text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-orange-600/20 transition-all hover:scale-[1.02] cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px]"
               >
-                Register for Free
+                <span>Register on ATAL Portal</span>
+                <ArrowUpRight className="w-4 h-4" />
               </a>
               <button
                 onClick={handleScrollToTimeline}
-                className="border-2 border-slate-300 hover:border-slate-800 text-slate-800 font-bold px-7 py-3.5 rounded-xl transition-all hover:bg-slate-100 cursor-pointer inline-flex items-center justify-center min-h-[44px]"
+                className="border-2 border-slate-300 hover:border-slate-800 text-slate-800 font-bold px-7 py-3.5 rounded-xl transition-all hover:bg-slate-100 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px]"
               >
-                Explore Timeline
+                <Calendar className="w-4 h-4" />
+                <span>Explore 6-Day Schedule</span>
               </button>
             </div>
 
           </div>
 
-          {/* Right Column: Subtle 3D Tilt + Spotlight Credentials Card (5 Columns) */}
+          {/* Right Column: Subtle 3D Tilt + Spotlight Specifications Card (5 Columns) */}
           <div className="lg:col-span-5 w-full max-w-md mx-auto mt-6 lg:mt-0 h-full [perspective:1000px]">
             <motion.div
               style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
@@ -221,22 +220,25 @@ export const HeroSection: React.FC = () => {
               <div
                 className="absolute inset-0 pointer-events-none transition-opacity duration-300"
                 style={{
-                  background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(6, 6, 6, 0.09), transparent 40%)`,
+                  background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(29, 78, 216, 0.08), transparent 40%)`,
                 }}
               />
 
               <div style={{ transform: 'translateZ(10px)' }} className="relative z-10 space-y-4">
                 <div>
-                  {/* <span className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-1 block">
-                    WORKSHOP SPECIFICATIONS
-                  </span> */}
-                  <h3 className="text-lg font-medium text-slate-600 pb-2 border-b border-slate-100">
-                    Key Details
-                  </h3>
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      FDP Specifications
+                    </h3>
+                    <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-50 text-primary border border-blue-200">
+                      AICTE ATAL
+                    </span>
+                  </div>
                 </div>
 
-                <div className="space-y-7">
-                  {credentials.map((cred, idx) => (
+                <div className="space-y-6 pt-2">
+                  {specifications.map((cred, idx) => (
                     <div key={idx} className="grid grid-cols-12 gap-3 pb-3 border-b border-slate-50 last:border-b-0 last:pb-0">
                       <div className="col-span-5 text-xs font-bold text-slate-400 uppercase tracking-wider">
                         {cred.key}
