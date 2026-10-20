@@ -126,6 +126,9 @@ export const AboutSection: React.FC = () => {
                 src={sipnaGate}
                 alt="Sipna Campus Entrance Gate"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108 pointer-events-none"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
               
               <div className="bg-gradient-to-t from-slate-900 via-slate-950/40 to-transparent p-6 flex flex-col justify-end absolute inset-0 transition-opacity duration-300 z-10">

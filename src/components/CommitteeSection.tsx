@@ -87,6 +87,11 @@ export const CommitteeSection: React.FC = () => {
                     alt={leader.name}
                     className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mx-auto rounded-full object-cover object-top border-2 border-slate-100 shadow-inner mb-3 select-none group-hover:border-[#1D4ED8] transition-colors duration-300"
                     loading="lazy"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(leader.name)}&background=0F172A&color=F8FAFC&size=300&bold=true`;
+                    }}
                   />
                   <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-50 text-primary border border-blue-200 text-[10px] font-black tracking-wider uppercase mb-1.5">
                     {leader.role}
@@ -120,6 +125,11 @@ export const CommitteeSection: React.FC = () => {
                     alt={coord.name}
                     className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mx-auto rounded-full object-cover object-top border-2 border-slate-100 shadow-inner mb-3 select-none group-hover:border-[#1D4ED8] transition-colors duration-300"
                     loading="lazy"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(coord.name)}&background=0F172A&color=F8FAFC&size=300&bold=true`;
+                    }}
                   />
                   <span className="inline-block px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-[10px] font-black tracking-wider uppercase mb-1.5">
                     {coord.role}

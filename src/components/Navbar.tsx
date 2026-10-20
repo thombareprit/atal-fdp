@@ -28,7 +28,12 @@ export const Navbar: React.FC = () => {
     e.preventDefault();
     setIsOpen(false);
     const targetId = id.startsWith('#') ? id.slice(1) : id;
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof document !== 'undefined') {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   // Animation Timers
@@ -56,12 +61,19 @@ export const Navbar: React.FC = () => {
                   mass: 0.8
                 }}
                 className="hidden md:flex items-center cursor-pointer select-none"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
               >
                 <img
                   src={sipnaLogo}
                   alt="Sipna Logo"
                   className="h-10 lg:h-11 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </motion.div>
             )}
@@ -76,15 +88,22 @@ export const Navbar: React.FC = () => {
                   exit={{ opacity: 0, y: 8, scale: 0.96 }}
                   transition={{ duration: MOBILE_DURATION, ease: [0.16, 1, 0.3, 1] }}
                   className="flex md:hidden items-center gap-2 cursor-pointer select-none overflow-hidden"
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                 >
                   <img
                     src={sipnaLogo}
                     alt="Sipna Logo"
                     className="h-7 sm:h-8 w-auto object-contain shrink-0"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
-                  <span className="text-[9px] min-[360px]:text-[10px] min-[400px]:text-[11.5px] font-black text-[#0F172A] uppercase tracking-tighter whitespace-nowrap truncate">
-                    Sipna College of Engineering & Technology
+                  <span className="text-[9.5px] min-[375px]:text-[10.5px] font-black text-[#0F172A] uppercase tracking-tighter whitespace-nowrap truncate">
+                    SIPNA COLLEGE OF ENGINEERING & TECHNOLOGY
                   </span>
                 </motion.div>
               )}
@@ -156,9 +175,16 @@ export const Navbar: React.FC = () => {
               <div className="space-y-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2.5">
-                    <img src={sipnaLogo} alt="SCOET Logo" className="h-8 w-auto object-contain" />
+                    <img 
+                      src={sipnaLogo} 
+                      alt="SCOET Logo" 
+                      className="h-8 w-auto object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
                     <span className="text-xs font-black text-[#0F172A] tracking-tight uppercase leading-tight">
-                      Sipna College of Engineering & Technology
+                      SIPNA COLLEGE OF ENGINEERING & TECHNOLOGY
                     </span>
                   </div>
                   <button

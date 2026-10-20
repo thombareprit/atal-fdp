@@ -46,23 +46,31 @@ const DayTimeline: React.FC<DayTimelineProps> = ({
 
   useEffect(() => {
     const updateBounds = () => {
-      if (firstNodeRef.current && lastNodeRef.current && containerRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const firstRect = firstNodeRef.current.getBoundingClientRect();
-        const lastRect = lastNodeRef.current.getBoundingClientRect();
+      try {
+        if (firstNodeRef.current && lastNodeRef.current && containerRef.current) {
+          const containerRect = containerRef.current.getBoundingClientRect();
+          const firstRect = firstNodeRef.current.getBoundingClientRect();
+          const lastRect = lastNodeRef.current.getBoundingClientRect();
 
-        const top = (firstRect.top + firstRect.height / 2) - containerRect.top;
-        const bottom = containerRect.bottom - (lastRect.top + lastRect.height / 2);
+          const top = (firstRect.top + firstRect.height / 2) - containerRect.top;
+          const bottom = containerRect.bottom - (lastRect.top + lastRect.height / 2);
 
-        setSpineBounds({ top, bottom });
+          setSpineBounds({ top, bottom });
+        }
+      } catch (err) {
+        console.warn("Error updating spine bounds:", err);
       }
     };
 
     updateBounds();
-    window.addEventListener('resize', updateBounds);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateBounds);
+    }
     const timer = setTimeout(updateBounds, 150);
     return () => {
-      window.removeEventListener('resize', updateBounds);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateBounds);
+      }
       clearTimeout(timer);
     };
   }, [items, isActive]);
@@ -642,7 +650,12 @@ export const TimelineSection: React.FC = () => {
   };
 
   const scrollToSchedule = () => {
-    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof document !== 'undefined') {
+      const element = document.getElementById('schedule') || containerRef.current;
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   const handleNextDay = (nextDayNum: 1 | 2 | 3 | 4 | 5 | 6) => {
@@ -652,7 +665,7 @@ export const TimelineSection: React.FC = () => {
 
   const handleBackToDay1 = () => {
     setActiveDay(1);
-    document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToSchedule();
   };
 
   return (
@@ -673,13 +686,13 @@ export const TimelineSection: React.FC = () => {
         </div>
 
         {/* Day Switcher Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 bg-slate-200/70 rounded-2xl sm:rounded-full max-w-4xl mx-auto w-full shadow-inner">
+        <div className="flex justify-center mb-8 w-full">
+          <div className="flex overflow-x-auto no-scrollbar items-center sm:justify-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 bg-slate-200/70 rounded-2xl sm:rounded-full max-w-4xl mx-auto w-full shadow-inner px-2 sm:px-3">
             {days.map((day) => (
               <button
                 key={day.id}
                 onClick={() => setActiveDay(day.id as 1 | 2 | 3 | 4 | 5 | 6)}
-                className="relative py-2.5 px-3 sm:px-4 min-h-[44px] rounded-xl sm:rounded-full font-bold text-xs transition-all duration-200 focus:outline-none cursor-pointer flex flex-col items-center justify-center"
+                className="relative py-2.5 px-3 sm:px-4 min-h-[44px] shrink-0 rounded-xl sm:rounded-full font-bold text-xs transition-all duration-200 focus:outline-none cursor-pointer flex flex-col items-center justify-center min-w-[70px] sm:min-w-0"
               >
                 {activeDay === day.id && (
                   <motion.div
@@ -708,7 +721,7 @@ export const TimelineSection: React.FC = () => {
         </div>
 
         {/* Dynamic Height Rendering: active day container wraps height with zero blank gap */}
-        <div className="w-full py-4 md:py-6 h-auto transition-all duration-300">
+        <div className="w-full py-4 md:py-6 h-auto min-h-0 transition-all duration-300">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeDay}

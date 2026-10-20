@@ -19,12 +19,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-canvas text-navy flex flex-col">
+    <div className="min-h-screen bg-canvas text-navy flex flex-col overflow-x-hidden">
       {/* Sticky Header Navbar */}
       <Navbar />
 
       {/* Main Page Sections */}
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         <motion.div {...revealProps}>
           <HeroSection />
         </motion.div>

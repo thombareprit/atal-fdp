@@ -10,14 +10,17 @@ export const RegistrationSection: React.FC = () => {
     if (type === 'brochure') setDownloadingBrochure(true);
     if (type === 'timetable') setDownloadingTimetable(true);
 
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', filename);
-    link.setAttribute('target', '_blank');
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (typeof document !== 'undefined') {
+      const resolvedUrl = url.startsWith('/') ? `.${url}` : url;
+      const link = document.createElement('a');
+      link.href = resolvedUrl;
+      link.setAttribute('download', filename);
+      link.setAttribute('target', '_blank');
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
 
     setTimeout(() => {
       if (type === 'brochure') setDownloadingBrochure(false);
@@ -167,7 +170,7 @@ export const RegistrationSection: React.FC = () => {
               <button
                 onClick={() =>
                   handleDownload(
-                    '/SIPNA-ATAL-FDP-Brochure.pdf',
+                    './SIPNA-ATAL-FDP-Brochure.pdf',
                     'AICTE_ATAL_Biomedical_AI_FDP_Brochure.pdf',
                     'brochure'
                   )
@@ -187,7 +190,7 @@ export const RegistrationSection: React.FC = () => {
               <button
                 onClick={() =>
                   handleDownload(
-                    '/SIPNA-ATAL-FDP-Timetable.pdf',
+                    './SIPNA-ATAL-FDP-Timetable.pdf',
                     'AICTE_ATAL_Biomedical_AI_FDP_Timetable.pdf',
                     'timetable'
                   )

@@ -131,6 +131,11 @@ export const SpeakersSection: React.FC = () => {
               alt={speaker.name}
               className="w-full h-full object-cover object-top filter transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.onerror = null;
+                target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(speaker.name)}&background=0F172A&color=F8FAFC&size=400&bold=true`;
+              }}
             />
             {/* Domain Badge */}
             <span className="bg-slate-900/90 backdrop-blur-md text-amber-300 border border-white/20 text-[9px] md:text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full absolute bottom-2 left-2 z-10 shadow-sm">
@@ -184,7 +189,7 @@ export const SpeakersSection: React.FC = () => {
         <div
           ref={carouselRef}
           onScroll={handleCarouselScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-2 no-scrollbar md:flex-wrap md:overflow-visible md:justify-center md:gap-6 md:pb-0 md:px-0 max-w-7xl mx-auto"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 no-scrollbar md:flex-wrap md:overflow-visible md:justify-center md:gap-6 md:pb-0 md:px-0 max-w-7xl mx-auto"
         >
           {speakers.map((speaker, idx) => (
             <div

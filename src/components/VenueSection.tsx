@@ -27,6 +27,9 @@ export const VenueSection: React.FC = () => {
               alt="Sipna SCOET Campus"
               className="w-full h-full min-h-[340px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
             />
             
             {/* Hover Spotlight Lens */}

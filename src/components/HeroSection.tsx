@@ -51,18 +51,20 @@ export const HeroSection: React.FC = () => {
 
   const handleScrollToTimeline = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const element = document.querySelector('#schedule');
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    if (typeof document !== 'undefined') {
+      const element = document.querySelector('#schedule');
+      if (element && typeof window !== 'undefined' && document.body) {
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
     }
   };
 
@@ -82,6 +84,9 @@ export const HeroSection: React.FC = () => {
           src={sipnaBuilding} 
           alt="Sipna Building Background" 
           className="w-full h-full object-cover object-center opacity-[0.8] contrast-125 scale-105 transition-transform duration-1000"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
         />
       </div>
 
@@ -112,6 +117,9 @@ export const HeroSection: React.FC = () => {
                   src={sipnaLogo}
                   alt="Sipna Logo"
                   className="h-16 lg:h-20 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </motion.div>
             )}
@@ -124,6 +132,9 @@ export const HeroSection: React.FC = () => {
                 className="h-16 w-auto object-contain"
                 animate={{ opacity: isScrolledPastHero ? 0.35 : 1, scale: isScrolledPastHero ? 0.95 : 1 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
           </div>
@@ -141,9 +152,19 @@ export const HeroSection: React.FC = () => {
             DEPARTMENT OF ELECTRONICS & TELECOMMUNICATION ENGINEERING
           </span>
           <div className="flex items-center justify-center gap-4 sm:gap-6 my-2">
-            <img src={naacLogo} alt="NAAC Grade A+" className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
+            <img 
+              src={naacLogo} 
+              alt="NAAC Grade A+" 
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain" 
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
             <span className="h-6 w-px bg-slate-300" />
-            <img src={nbaLogo} alt="NBA Accredited (4 Consecutive Terms)" className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
+            <img 
+              src={nbaLogo} 
+              alt="NBA Accredited (4 Consecutive Terms)" 
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain" 
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
           </div>
           <p className="text-[11px] sm:text-xs font-semibold text-slate-600 text-center max-w-2xl mx-auto leading-normal">
             Accredited by NAAC with Grade A+ | NBA Accredited (4 Consecutive Terms) | Approved by AICTE
@@ -162,6 +183,7 @@ export const HeroSection: React.FC = () => {
                 src={aicteLogo}
                 alt="AICTE ATAL Logo"
                 className="h-16 md:h-20 w-auto object-contain shrink-0 filter drop-shadow-md"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <div>
                 <span className="text-sm sm:text-lg md:text-xl font-black tracking-wider text-[#92400E] uppercase block">
